@@ -346,23 +346,23 @@ html {
 .skills .skill .htmlcss{ width: 0%; animation: 2s htmlcss forwards; }
 .skills .skill .photoshop{ width: 0%; animation: 2s photoshop forwards; }
 .skills .skill .wordpress{ width: 0%; animation: 2s wordpress forwards; }
-.skills .skill .drupal{ width: 0%; animation: 2s drupal forwards; }
+.skills .skill .java{ width: 0%; animation: 2s java forwards; }
 .skills .skill .communication{ width: 0%; animation: 2s communication forwards; }
 .skills .skill .teamwork{ width: 0%; animation: 2s teamwork forwards; }
 .skills .skill .creativity{ width: 0%; animation: 2s creativity forwards; }
 .skills .skill .dedication{ width: 0%; animation: 2s dedication forwards; }
 .skills .skill .management{ width: 0%; animation: 2s management forwards; }
 
-@keyframes javascript{ 0%{width: 0%;} 100%{width: 75%;} }
-@keyframes htmlcss{ 0%{width: 0%;} 100%{width: 89%;} }
-@keyframes photoshop{ 0%{width: 0%;} 100%{width: 95%;} }
-@keyframes wordpress{ 0%{width: 0%;} 100%{width: 81%;} }
-@keyframes drupal{ 0%{width: 0%;} 100%{width: 55%;} }
-@keyframes communication{ 0%{width: 0%;} 100%{width: 80%;} }
-@keyframes teamwork{ 0%{width: 0%;} 100%{width: 70%;} }
-@keyframes creativity{ 0%{width: 0%;} 100%{width: 99%;} }
-@keyframes dedication{ 0%{width: 0%;} 100%{width: 65%;} }
-@keyframes management{ 0%{width: 0%;} 100%{width: 94%;} }
+@keyframes javascript{ 0%{width: 0%;} 100%{width: 50%;} }
+@keyframes htmlcss{ 0%{width: 0%;} 100%{width: 60%;} }
+@keyframes photoshop{ 0%{width: 0%;} 100%{width: 50%;} }
+@keyframes wordpress{ 0%{width: 0%;} 100%{width: 70%;} }
+@keyframes java{ 0%{width: 0%;} 100%{width: 65%;} }
+@keyframes communication{ 0%{width: 0%;} 100%{width: 70%;} }
+@keyframes teamwork{ 0%{width: 0%;} 100%{width: 20%;} }
+@keyframes creativity{ 0%{width: 0%;} 100%{width: 50%;} }
+@keyframes dedication{ 0%{width: 0%;} 100%{width: 50%;} }
+@keyframes management{ 0%{width: 0%;} 100%{width: 80%;} }
 
 /* Responsive para Skills */
 @media screen and (max-width: 980px) {
