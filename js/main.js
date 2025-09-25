@@ -11,7 +11,7 @@ function showHideMenu(){
   }
 }
 
-function seleccionar(){
+function selectedSection(){
   //hide the menu once a section is selected
   document.getElementById("nav").classList = "";
   menuVisible = false;

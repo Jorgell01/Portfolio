@@ -17,15 +17,15 @@
             </div>
             <nav id="nav">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Me</a></li>
-                    <li><a href="#">SKILLS</a></li>
-                    <li><a href="#">CV</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#home" onclick="seleccionar()">Home</a></li>
+                    <li><a href="#about-me" onclick="seleccionar()">About Me</a></li>
+                    <li><a href="#skills" onclick="seleccionar()">SKILLS</a></li>
+                    <li><a href="#curriculum" onclick="seleccionar()">CV</a></li>
+                    <li><a href="#portfolio" onclick="seleccionar()">Portfolio</a></li>
+                    <li><a href="#contact" onclick="seleccionar()">Contact</a></li>
                 </ul>
             </nav>
-            <div class="nav-responsive">
+            <div class="nav-responsive" onclick="showHideMenu()">
                 <i class="fa-solid fa-bars"></i>
             </div>
         </header>
@@ -251,5 +251,7 @@
             </div>
         </div>
     </section>
+
+    <script src="js/main.js"></script>
  </body>
 </html>
