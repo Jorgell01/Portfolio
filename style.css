@@ -145,9 +145,10 @@ html {
 }
 
 .about-me .container-about-me p {
-  font: 18px;
-  line-height: 22px;
+  font-size: 18px;
+  line-height: 25px;
   margin-bottom: 20px;
+  text-align: left;
 }
 
 .about-me .container-about-me p span {
@@ -157,10 +158,12 @@ html {
 
 .about-me .row {
   display: flex;
+  margin-top: 30px;
 }
 
 .about-me .row .col {
   width: 50%;
+  padding: 0 15px;
 }
 
 .about-me .row .col h3 {
@@ -175,7 +178,7 @@ html {
 }
 
 .about-me .row .col ul li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
 }
@@ -183,22 +186,23 @@ html {
 .about-me .row .col ul li strong {
   display: inline-block;
   color: #1cb698;
-  min-width: 90px;
-  margin-right: 8px;
-  vertical-align: middle;
+  min-width: 80px;
+  margin-right: 10px;
 }
 
 .about-me .row .col ul li span {
   background-color: #1cb698;
-  padding: 3px;
+  padding: 5px 8px;
   font-weight: bold;
   border-radius: 5px;
+  font-size: 14px;
 }
 
 .about-me .row .col .container-interests {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 20px;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .about-me .row .col .container-interests .interests {
@@ -211,18 +215,60 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: .3s;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.about-me .row .col .container-interests .interests:hover {
+  background-color: #1cb698;
+  transform: scale(1.1);
 }
 
 .about-me .row .col .container-interests i {
   font-size: 30px;
   margin-bottom: 10px;
+  color: #fff;
+}
+
+.about-me .row .col .container-interests .interests span {
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
 }
 
 .about-me .row .btn-cv {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+  margin-top: 20px;
+}
+
+/* Responsive design for About Me section */
+@media screen and (max-width: 980px) {
+  .about-me .row {
+    flex-direction: column;
+  }
+  
+  .about-me .row .col {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-me {
+    padding: 40px 15px;
+  }
+  
+  .about-me .row .col .container-interests {
+    justify-content: center;
+    margin-left: 0;
+  }
+  
+  .about-me .row .col .container-interests .interests {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 #download-cv {
@@ -232,16 +278,17 @@ html {
   width: fit-content;
   display: block;
   margin: 20px auto;
-  padding: 10px 22px;
+  padding: 10px 20px;
   font-size: 16px;
   color: #fff;
-  position: relative;
-  z-index: 10;
+  border-radius: 5px;
+  transition: 0.3s;
 }
 
 #download-cv:hover {
-  color: #1cb698;
+  background-color: #1cb698;
   border-color: #1cb698;
+  color: #fff;
 }
 
 /* Section Skills */
@@ -359,10 +406,10 @@ html {
 @keyframes wordpress{ 0%{width: 0%;} 100%{width: 70%;} }
 @keyframes java{ 0%{width: 0%;} 100%{width: 65%;} }
 @keyframes communication{ 0%{width: 0%;} 100%{width: 70%;} }
-@keyframes teamwork{ 0%{width: 0%;} 100%{width: 20%;} }
+@keyframes teamwork{ 0%{width: 0%;} 100%{width: 50%;} }
 @keyframes creativity{ 0%{width: 0%;} 100%{width: 50%;} }
 @keyframes dedication{ 0%{width: 0%;} 100%{width: 50%;} }
-@keyframes management{ 0%{width: 0%;} 100%{width: 80%;} }
+@keyframes management{ 0%{width: 0%;} 100%{width: 60%;} }
 
 /* Responsive para Skills */
 @media screen and (max-width: 980px) {
