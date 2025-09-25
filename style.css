@@ -77,7 +77,10 @@ html {
   padding: 20px;
   background-color: #1e2326;
   max-width: 350px;
-  margin: auto;
+  margin-top: auto;
+  margin-bottom: 35px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
   border-radius: 40px;
 }
@@ -119,6 +122,468 @@ html {
 
 .home .container-banner .redes a:hover {
   background-color: #1cb698;
+}
+
+/* Section About */
+.about-me {
+  background-color: #1e2326;
+  color: #fff;
+  padding: 50px 20px;
+}
+
+.about-me .container-about-me,
+.container-section {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.about-me h2 {
+  font-size: 48px;
+  font-family: 'Righteous';
+  text-align: center;
+  padding: 20px 0;
+}
+
+.about-me .container-about-me p {
+  font: 18px;
+  line-height: 22px;
+  margin-bottom: 20px;
+}
+
+.about-me .container-about-me p span {
+  color: #1cb698;
+  font-weight: bold;
+}
+
+.about-me .row {
+  display: flex;
+}
+
+.about-me .row .col {
+  width: 50%;
+}
+
+.about-me .row .col h3 {
+  font-size: 28px;
+  font-family: 'Righteous';
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.about-me .row .col ul {
+  list-style: none;
+}
+
+.about-me .row .col ul li {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.about-me .row .col ul li strong {
+  display: inline-block;
+  color: #1cb698;
+  min-width: 90px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.about-me .row .col ul li span {
+  background-color: #1cb698;
+  padding: 3px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.about-me .row .col .container-interests {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 20px;
+}
+
+.about-me .row .col .container-interests .interests {
+  width: 100px;
+  height: 100px;
+  background-color: #252A2E;
+  border-radius: 10px;
+  margin: 0 15px 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: .3s;
+}
+
+.about-me .row .col .container-interests i {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.about-me .row .btn-cv {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#download-cv {
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid #fff;
+  width: fit-content;
+  display: block;
+  margin: 20px auto;
+  padding: 10px 22px;
+  font-size: 16px;
+  color: #fff;
+  position: relative;
+  z-index: 10;
+}
+
+#download-cv:hover {
+  color: #1cb698;
   border-color: #1cb698;
-  color: #1e2326;
+}
+
+/* Section Skills */
+.skills{
+    background-color: #252A2E;
+    color: #fff;
+    padding: 50px 20px;
+}
+
+.skills .container-skills{
+    max-width: 1100px;
+    margin: auto;
+}
+
+.skills h2{
+    font-size: 48px;
+    font-family: 'Righteous';
+    text-align: center;
+    padding: 20px 0;
+
+}
+
+.skills .row{
+    display: flex;
+}
+
+.skills .row .col{
+    width: 50%;
+    padding: 0 20px;
+}
+
+.skills .row .col h3{
+    font-size: 28px;
+    font-family: 'Righteous';
+    margin-bottom: 25px;
+}
+
+.skills .skill > span{
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.skills .skill .progress-bar{
+    height: 12px;
+    width: 100%;
+    background-color: #131517;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: 30px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.skills .skill .progress{
+    background: linear-gradient(90deg, #1CB698, #26d4aa);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 10px;
+    transition: width 2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(28, 182, 152, 0.3);
+}
+
+.skills .skill .progress-bar .percentage{
+    position: absolute;
+    background-color: #1CB698;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    top: -30px;
+    right: 0;
+    min-width: 35px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(28, 182, 152, 0.4);
+    opacity: 0;
+    animation: fadeInPercentage 0.5s ease-in-out 2.2s forwards;
+}
+
+.skills .skill .progress-bar .percentage::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #1CB698;
+}
+
+@keyframes fadeInPercentage {
+    to { opacity: 1; }
+}
+
+/* Animaciones para todas las skills */
+.skills .skill .javascript{ width: 0%; animation: 2s javascript forwards; }
+.skills .skill .htmlcss{ width: 0%; animation: 2s htmlcss forwards; }
+.skills .skill .photoshop{ width: 0%; animation: 2s photoshop forwards; }
+.skills .skill .wordpress{ width: 0%; animation: 2s wordpress forwards; }
+.skills .skill .drupal{ width: 0%; animation: 2s drupal forwards; }
+.skills .skill .communication{ width: 0%; animation: 2s communication forwards; }
+.skills .skill .teamwork{ width: 0%; animation: 2s teamwork forwards; }
+.skills .skill .creativity{ width: 0%; animation: 2s creativity forwards; }
+.skills .skill .dedication{ width: 0%; animation: 2s dedication forwards; }
+.skills .skill .management{ width: 0%; animation: 2s management forwards; }
+
+@keyframes javascript{ 0%{width: 0%;} 100%{width: 75%;} }
+@keyframes htmlcss{ 0%{width: 0%;} 100%{width: 89%;} }
+@keyframes photoshop{ 0%{width: 0%;} 100%{width: 95%;} }
+@keyframes wordpress{ 0%{width: 0%;} 100%{width: 81%;} }
+@keyframes drupal{ 0%{width: 0%;} 100%{width: 55%;} }
+@keyframes communication{ 0%{width: 0%;} 100%{width: 80%;} }
+@keyframes teamwork{ 0%{width: 0%;} 100%{width: 70%;} }
+@keyframes creativity{ 0%{width: 0%;} 100%{width: 99%;} }
+@keyframes dedication{ 0%{width: 0%;} 100%{width: 65%;} }
+@keyframes management{ 0%{width: 0%;} 100%{width: 94%;} }
+
+/* Responsive para Skills */
+@media screen and (max-width: 980px) {
+    .skills .row {
+        flex-direction: column;
+    }
+    
+    .skills .row .col {
+        width: 100%;
+        margin-bottom: 30px;
+        padding: 0 10px;
+    }
+    
+    .skills h2 {
+        font-size: 36px;
+    }
+    
+    .skills .row .col h3 {
+        font-size: 24px;
+        text-align: center;
+    }
+}
+
+/* Section Curriculum */
+.curriculum {
+    background-color: #1e2326;
+    color: #fff;
+    padding: 50px 20px;
+}
+
+.curriculum .container-section {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.curriculum h2 {
+    font-size: 48px;
+    font-family: 'Righteous';
+    text-align: center;
+    padding: 20px 0;
+}
+
+.curriculum .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.curriculum .left-col,
+.curriculum .right-col {
+    width: 50%;
+    position: relative;
+}
+
+.curriculum .left-col h3,
+.curriculum .right-col h3 {
+    font-size: 28px;
+    font-family: 'Righteous';
+    margin-bottom: 30px;
+    text-align: center;
+    color: #1cb698;
+}
+
+/* Education elements (left) */
+.curriculum .left-item {
+    border-left: 2px solid #1cb698;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    position: relative;
+    text-align: center;
+}
+
+.curriculum .left-item h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #1cb698;
+    font-weight: bold;
+    text-align: center;
+}
+
+.curriculum .left-item .home {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.curriculum .institution-logo {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    margin-right: 10px;
+    margin-left: 50px;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 2px;
+}
+
+.curriculum .left-item .date {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.curriculum .left-item p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.curriculum .left-item .conectori {
+    position: absolute;
+    top: 0;
+    left: -8px;
+}
+
+.curriculum .left-item .circuloi {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #1cb698;
+    border: 3px solid #1e2326;
+}
+
+/* Experience elements (right) */
+.curriculum .right-item {
+    border-right: 2px solid #1cb698;
+    padding-right: 20px;
+    margin-bottom: 30px;
+    position: relative;
+    text-align: center;
+}
+
+.curriculum .right-item .home {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.curriculum .right-item h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #1cb698;
+    font-weight: bold;
+    text-align: center;
+}
+
+.curriculum .right-item .date {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.curriculum .right-item p {
+    color: #ccc;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.curriculum .right-item .conectord {
+    position: absolute;
+    top: 0;
+    right: -8px;
+}
+
+.curriculum .right-item .circulod {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #1cb698;
+    border: 3px solid #1e2326;
+}
+
+/* Responsive for curriculum */
+@media screen and (max-width: 980px) {
+    .curriculum .row {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .curriculum .left-col,
+    .curriculum .right-col {
+        width: 100%;
+    }
+    
+    .curriculum .right-item {
+        border-right: none;
+        border-left: 2px solid #1cb698;
+        padding-left: 20px;
+        padding-right: 0;
+        text-align: center;
+    }
+    
+    .curriculum .right-item .conectord {
+        left: -8px;
+        right: auto;
+    }
+    
+    .curriculum .institution-logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .curriculum .right-item .home {
+        justify-content: center;
+    }
+    
+    .curriculum .left-item {
+        text-align: center;
+    }
+    
+    .curriculum .left-item .home {
+        justify-content: center;
+    }
 }
