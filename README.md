@@ -1,5 +1,5 @@
 # Portfolio
 
-Este proyecto es un portafolio personal desarrollado para mostrar trabajos, habilidades y experiencia profesional. Aquí podrás encontrar información relevante sobre mis proyectos, tecnologías utilizadas y formas de contacto.
+This project is a personal portfolio developed to showcase work, skills, and professional experience. Here you will find relevant information about my projects, technologies used, and ways to get in touch.
 
-**Autor:** Jorge A. Herrero Santana
+**Author:** Jorge A. Herrero Santana
