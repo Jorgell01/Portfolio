@@ -6,7 +6,7 @@
   padding: 0;
 }
 html {
-  /* me permite deslizar cuando hago click en un enlace */
+  /* Allow me to scroll smoothly */
   scroll-behavior: smooth;
 }
 /* Menu */
@@ -631,6 +631,222 @@ html {
     }
     
     .curriculum .left-item .home {
+        justify-content: center;
+    }
+}
+
+/* Section Portfolio */
+.portfolio {
+    background-color: #1e2326;
+    color: #fff;
+    padding: 50px 20px;
+}
+
+.portfolio h2 {
+    font-size: 48px;
+    font-family: 'Righteous';
+    text-align: center;
+    padding: 20px 0;
+}
+
+.portfolio .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.portfolio .project-item {
+    width: 300px;
+    background-color: #252A2E;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.portfolio .project-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(28, 182, 152, 0.3);
+}
+
+.portfolio .project-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #333;
+}
+
+.portfolio .project-info {
+    padding: 20px;
+}
+
+.portfolio .project-info h4 {
+    font-size: 20px;
+    font-family: 'Righteous';
+    margin-bottom: 10px;
+    color: #1cb698;
+}
+
+.portfolio .project-info p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.portfolio .project-links {
+    display: flex;
+    gap: 15px;
+}
+
+.portfolio .project-links a {
+    color: #fff;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.portfolio .project-links a:hover {
+    color: #1cb698;
+    transform: scale(1.2);
+}
+
+/* Section Contact */
+.contact {
+    background-color: #252A2E;
+    color: #fff;
+    padding: 50px 20px;
+}
+
+.contact h2 {
+    font-size: 48px;
+    font-family: 'Righteous';
+    text-align: center;
+    padding: 20px 0;
+}
+
+.contact .row {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.contact .col {
+    flex: 1;
+}
+
+.contact .col h3 {
+    font-size: 24px;
+    font-family: 'Righteous';
+    margin-bottom: 20px;
+    color: #1cb698;
+}
+
+.contact .contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.contact .contact-item i {
+    color: #1cb698;
+    margin-right: 15px;
+    font-size: 18px;
+    width: 20px;
+}
+
+.contact .social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.contact .social-links a {
+    color: #fff;
+    font-size: 24px;
+    transition: 0.3s;
+}
+
+.contact .social-links a:hover {
+    color: #1cb698;
+    transform: scale(1.2);
+}
+
+.contact .form-group {
+    margin-bottom: 20px;
+}
+
+.contact .form-group input,
+.contact .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: #1e2326;
+    border: 2px solid #333;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.contact .form-group input:focus,
+.contact .form-group textarea:focus {
+    border-color: #1cb698;
+    outline: none;
+}
+
+.contact form button {
+    background-color: #1cb698;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact form button:hover {
+    background-color: #20d4aa;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+    background-color: #1e2326;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #333;
+}
+
+/* Responsive Portfolio & Contact */
+@media screen and (max-width: 980px) {
+    .portfolio .row {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .portfolio .project-item {
+        width: 90%;
+        max-width: 400px;
+    }
+    
+    .contact .row {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .portfolio h2,
+    .contact h2 {
+        font-size: 36px;
+    }
+    
+    .portfolio .project-item {
+        width: 100%;
+    }
+    
+    .contact .social-links {
         justify-content: center;
     }
 }
