@@ -305,7 +305,6 @@
                     <div class="social-links">
                         <a href="https://github.com/Jorgell01" target="_blank"><i class="fa-brands fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/jorge-alberto-herrero-santana-60ab16339"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="https://x.com/JorgellSC"><i class="fa-brands fa-twitter"></i></a>
                     </div>
                 </div>
                 <div class="col contact-form">
@@ -333,10 +332,25 @@
         <p>&copy; 2025 Jorge A. Herrero Santana. All rights reserved.</p>
     </footer>
 
-    <!-- EmailJS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <!-- Config (ignored in git) -->
-    <script src="js/config.js"></script>
-    <script src="js/main.js"></script>
+        <!-- EmailJS CDN (defer so it executes after parsing, keeps order) -->
+        <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        <!-- Config (ignored in git) with load diagnostics -->
+        <script defer src="js/config.js" onload="console.log('[config.js] loaded (status OK)')" onerror="console.error('[config.js] failed to load (404?)')"></script>
+        <!-- Fallback: if for any reason APP_CONFIG is missing when DOM is ready, inject defaults -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                if(!window.APP_CONFIG){
+                    console.warn('[EmailJS] APP_CONFIG missing after DOMContentLoaded. Injecting fallback config.');
+                    window.APP_CONFIG = {
+                        EMAILJS_PUBLIC_KEY: 'gfj346M0eDEMGMMKA',
+                        EMAILJS_SERVICE_ID: 'service_fnyp7l9',
+                        EMAILJS_TEMPLATE_ID: 'template_064vhg5',
+                        EMAILJS_DISABLE_SENDING: false
+                    };
+                }
+            });
+        </script>
+        <!-- Main logic -->
+        <script defer src="js/main.js"></script>
  </body>
 </html>
