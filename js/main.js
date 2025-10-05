@@ -61,17 +61,21 @@ document.addEventListener('DOMContentLoaded', function() {
     cvButton.addEventListener('click', downloadCV);
   }
 
-  // Inicializar EmailJS usando config.js
+  // Initialize EmailJS using config.js (previously failed due to comparing against the real key itself)
   if(window.APP_CONFIG){
     const { EMAILJS_PUBLIC_KEY } = window.APP_CONFIG;
-    if(EMAILJS_PUBLIC_KEY && !EMAILJS_PUBLIC_KEY.includes('gfj346M0eDEMGMMKA')){
-      try{ emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); }
-      catch(err){ console.warn('Fallo al inicializar EmailJS:', err); }
+    if(EMAILJS_PUBLIC_KEY){
+      try{ 
+        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+        console.log('[EmailJS] Initialized correctly');
+      } catch(err){ 
+        console.warn('[EmailJS] Failed to initialize:', err); 
+      }
     } else {
-      console.warn('EmailJS public key no configurada aún (config.js)');
+      console.warn('[EmailJS] Public key empty or not configured in config.js');
     }
   } else {
-    console.warn('APP_CONFIG no encontrado. Asegúrate de cargar js/config.js antes de main.js');
+    console.warn('[EmailJS] APP_CONFIG not found. Make sure to load js/config.js before main.js');
   }
 
   // Contact form handling
@@ -98,16 +102,15 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
 
-      // Leer configuración
+  // Read configuration
       const cfg = window.APP_CONFIG || {};
       const { EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_DISABLE_SENDING } = cfg;
 
-      // Validaciones de configuración
-      if(!EMAILJS_PUBLIC_KEY || EMAILJS_PUBLIC_KEY.includes('REEMPLAZA_TU_PUBLIC_KEY') ||
-         !EMAILJS_SERVICE_ID || EMAILJS_SERVICE_ID.includes('REEMPLAZA_SERVICE_ID') ||
-         !EMAILJS_TEMPLATE_ID || EMAILJS_TEMPLATE_ID.includes('REEMPLAZA_TEMPLATE_ID')){
+  // Generic placeholder detection (values not replaced yet)
+      const isPlaceholder = (val) => !val || /^REEMPLAZA(_|)/i.test(val);
+      if(isPlaceholder(EMAILJS_PUBLIC_KEY) || isPlaceholder(EMAILJS_SERVICE_ID) || isPlaceholder(EMAILJS_TEMPLATE_ID)) {
         showFormMessage('Email service not configured. Update config.js.', 'error');
-        console.warn('Config EmailJS incompleta en config.js');
+        console.warn('[EmailJS] Incomplete config or placeholders still present in config.js');
         return;
       }
 
@@ -120,18 +123,22 @@ document.addEventListener('DOMContentLoaded', function() {
       submitBtn.textContent = 'Sending...';
 
       const templateParams = {
-        from_name: nameInput.value.trim(),
+        name: nameInput.value.trim(),
         reply_to: emailInput.value.trim(),
-        message: msgInput.value.trim()
+        message: msgInput.value.trim(),
+        time: new Date().toLocaleString()
       };
 
       try {
-        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+        console.log('[EmailJS] Sending...', { service: EMAILJS_SERVICE_ID, template: EMAILJS_TEMPLATE_ID, params: templateParams });
+        const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+        console.log('[EmailJS] Response:', response);
         showFormMessage('Message sent successfully! I will contact you soon.', 'success');
         form.reset();
       } catch(err){
-        console.error(err);
-        showFormMessage('There was an error sending your message. Please try again later.', 'error');
+        console.error('[EmailJS] Error while sending:', err);
+        const friendly = (err && (err.text || err.message)) ? 'Error: ' + (err.text || err.message) : 'There was an error sending your message. Please try again later.';
+        showFormMessage(friendly, 'error');
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
