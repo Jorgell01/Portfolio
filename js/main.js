@@ -131,10 +131,17 @@ document.addEventListener('DOMContentLoaded', function() {
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
 
+      const senderName = nameInput.value.trim();
+      const senderEmail = emailInput.value.trim();
+      const senderMsg = msgInput.value.trim();
+
+      // Include both 'from_name' (what your EmailJS template is using) and 'name' (legacy) for safety
       const templateParams = {
-        name: nameInput.value.trim(),
-        reply_to: emailInput.value.trim(),
-        message: msgInput.value.trim(),
+        from_name: senderName,
+        name: senderName,           // kept in case template still references {{name}}
+        reply_to: senderEmail,      // commonly used by EmailJS to set reply-to header
+        email: senderEmail,         // extra alias if template uses {{email}}
+        message: senderMsg,
         time: new Date().toLocaleString()
       };
 
