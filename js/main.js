@@ -60,4 +60,90 @@ document.addEventListener('DOMContentLoaded', function() {
   if (cvButton) {
     cvButton.addEventListener('click', downloadCV);
   }
+
+  // Inicializar EmailJS usando config.js
+  if(window.APP_CONFIG){
+    const { EMAILJS_PUBLIC_KEY } = window.APP_CONFIG;
+    if(EMAILJS_PUBLIC_KEY && !EMAILJS_PUBLIC_KEY.includes('gfj346M0eDEMGMMKA')){
+      try{ emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); }
+      catch(err){ console.warn('Fallo al inicializar EmailJS:', err); }
+    } else {
+      console.warn('EmailJS public key no configurada aún (config.js)');
+    }
+  } else {
+    console.warn('APP_CONFIG no encontrado. Asegúrate de cargar js/config.js antes de main.js');
+  }
+
+  // Contact form handling
+  const form = document.getElementById('contact-form');
+  const messageBox = document.getElementById('form-message');
+  if(form){
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const msgInput = document.getElementById('mensaje');
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      // Basic validation
+      if(!nameInput.value.trim() || !emailInput.value.trim() || !msgInput.value.trim()){
+        showFormMessage('Please fill in all fields.', 'error');
+        return;
+      }
+
+      // Very simple email pattern check
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(emailInput.value.trim())){
+        showFormMessage('Please enter a valid email address.', 'error');
+        return;
+      }
+
+      // Leer configuración
+      const cfg = window.APP_CONFIG || {};
+      const { EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_DISABLE_SENDING } = cfg;
+
+      // Validaciones de configuración
+      if(!EMAILJS_PUBLIC_KEY || EMAILJS_PUBLIC_KEY.includes('REEMPLAZA_TU_PUBLIC_KEY') ||
+         !EMAILJS_SERVICE_ID || EMAILJS_SERVICE_ID.includes('REEMPLAZA_SERVICE_ID') ||
+         !EMAILJS_TEMPLATE_ID || EMAILJS_TEMPLATE_ID.includes('REEMPLAZA_TEMPLATE_ID')){
+        showFormMessage('Email service not configured. Update config.js.', 'error');
+        console.warn('Config EmailJS incompleta en config.js');
+        return;
+      }
+
+      if(EMAILJS_DISABLE_SENDING){
+        showFormMessage('Sending disabled (development mode).', 'error');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      const templateParams = {
+        from_name: nameInput.value.trim(),
+        reply_to: emailInput.value.trim(),
+        message: msgInput.value.trim()
+      };
+
+      try {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+        showFormMessage('Message sent successfully! I will contact you soon.', 'success');
+        form.reset();
+      } catch(err){
+        console.error(err);
+        showFormMessage('There was an error sending your message. Please try again later.', 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }
+    });
+  }
+
+  function showFormMessage(text, type){
+    if(!messageBox) return;
+    messageBox.style.display = 'block';
+    messageBox.textContent = text;
+    messageBox.style.backgroundColor = type === 'success' ? '#1cb698' : '#b61c1c';
+    messageBox.style.color = '#fff';
+  }
 });
