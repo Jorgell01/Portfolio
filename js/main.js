@@ -63,9 +63,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initialize EmailJS using config.js (previously failed due to comparing against the real key itself)
   if(window.APP_CONFIG){
-    const { EMAILJS_PUBLIC_KEY } = window.APP_CONFIG;
+    const { EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID } = window.APP_CONFIG;
+    console.log('[EmailJS][Config loaded]', window.APP_CONFIG);
+    const missingAtInit = ['EMAILJS_PUBLIC_KEY','EMAILJS_SERVICE_ID','EMAILJS_TEMPLATE_ID']
+      .filter(k => !window.APP_CONFIG[k] || window.APP_CONFIG[k].trim() === '');
+    if(missingAtInit.length){
+      console.warn('[EmailJS] Missing values at init:', missingAtInit.join(', '));
+    }
     if(EMAILJS_PUBLIC_KEY){
-      try{ 
+      try { 
         emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
         console.log('[EmailJS] Initialized correctly');
       } catch(err){ 
@@ -107,10 +113,13 @@ document.addEventListener('DOMContentLoaded', function() {
       const { EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_DISABLE_SENDING } = cfg;
 
   // Generic placeholder detection (values not replaced yet)
-      const isPlaceholder = (val) => !val || /^REEMPLAZA(_|)/i.test(val);
-      if(isPlaceholder(EMAILJS_PUBLIC_KEY) || isPlaceholder(EMAILJS_SERVICE_ID) || isPlaceholder(EMAILJS_TEMPLATE_ID)) {
-        showFormMessage('Email service not configured. Update config.js.', 'error');
-        console.warn('[EmailJS] Incomplete config or placeholders still present in config.js');
+      const missing = [];
+      if(!EMAILJS_PUBLIC_KEY) missing.push('gfj346M0eDEMGMMKA');
+      if(!EMAILJS_SERVICE_ID) missing.push('service_fnyp7l9');
+      if(!EMAILJS_TEMPLATE_ID) missing.push('template_064vhg5');
+      if(missing.length){
+        showFormMessage('Email service not configured. Missing: ' + missing.join(', '), 'error');
+        console.warn('[EmailJS] Missing config values:', missing);
         return;
       }
 
