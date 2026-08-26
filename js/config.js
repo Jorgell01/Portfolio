@@ -1,0 +1,6 @@
+window.APP_CONFIG = {
+  EMAILJS_PUBLIC_KEY: 'gfj346M0eDEMGMMKA',
+  EMAILJS_SERVICE_ID: 'service_fnyp7l9',
+  EMAILJS_TEMPLATE_ID: 'template_064vhg5',
+  EMAILJS_DISABLE_SENDING: false
+};

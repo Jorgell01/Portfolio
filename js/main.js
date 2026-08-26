@@ -1,172 +1,134 @@
-let menuVisible = false;
-
-//Function to show or hide the menu
-function showHideMenu(){
-  if(menuVisible){
-    document.getElementById("nav").classList ="";
-    menuVisible = false;
-  }else{
-    document.getElementById("nav").classList ="responsive";
-    menuVisible = true;
-  }
-}
-
-function seleccionar(){
-  //hide the menu once a section is selected
-  document.getElementById("nav").classList = "";
-  menuVisible = false;
-}
-
-//Function to apply the animations of the skills
-function effectAbilities(){
-  var skills = document.getElementById("skills");
-  var distance_skills = window.innerHeight - skills.getBoundingClientRect().top;
-  if(distance_skills >= 300){
-    let habilidades = document.getElementsByClassName("progress");
-    habilidades[0].classList.add("javascript");
-    habilidades[1].classList.add("htmlcss");
-    habilidades[2].classList.add("photoshop");
-    habilidades[3].classList.add("wordpress");
-    habilidades[4].classList.add("java");
-    habilidades[5].classList.add("communication");
-    habilidades[6].classList.add("teamwork");
-    habilidades[7].classList.add("creativity");
-    habilidades[8].classList.add("dedication");
-    habilidades[9].classList.add("management");
-  }
-}
-
-//detect scrolling to apply the animation of the skills
-window.onscroll = function(){
-  effectAbilities();
-} 
-
-// Function to download CV
-function downloadCV() {
-  // Create a temporary link element
-  const link = document.createElement('a');
-  link.href = 'files/Jorge_Alberto_Herrero_Santana_CV.pdf'; // Path to your CV file
-  link.download = 'Jorge_Alberto_Herrero_Santana_CV.pdf'; // Name for the downloaded file
-  
-  // Append to body, click, and remove
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-
-// Add event listener when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  const cvButton = document.getElementById('download-cv');
-  if (cvButton) {
-    cvButton.addEventListener('click', downloadCV);
-  }
-
-  // Initialize EmailJS using config.js (previously failed due to comparing against the real key itself)
-  if(window.APP_CONFIG){
-    const { EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID } = window.APP_CONFIG;
-    console.log('[EmailJS][Config loaded]', window.APP_CONFIG);
-    const missingAtInit = ['EMAILJS_PUBLIC_KEY','EMAILJS_SERVICE_ID','EMAILJS_TEMPLATE_ID']
-      .filter(k => !window.APP_CONFIG[k] || window.APP_CONFIG[k].trim() === '');
-    if(missingAtInit.length){
-      console.warn('[EmailJS] Missing values at init:', missingAtInit.join(', '));
-    }
-    if(EMAILJS_PUBLIC_KEY){
-      try { 
-        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-        console.log('[EmailJS] Initialized correctly');
-      } catch(err){ 
-        console.warn('[EmailJS] Failed to initialize:', err); 
-      }
-    } else {
-      console.warn('[EmailJS] Public key empty or not configured in config.js');
-    }
-  } else {
-    console.warn('[EmailJS] APP_CONFIG not found. Make sure to load js/config.js before main.js');
-  }
-
-  // Contact form handling
+(() => {
+  const content = window.PORTFOLIO_CONTENT || {};
+  let lang = localStorage.getItem('portfolio-lang') || 'es';
+  const header = document.querySelector('.site-header');
+  const menuToggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('site-nav');
+  const languageToggle = document.getElementById('language-toggle');
+  const year = document.getElementById('year');
   const form = document.getElementById('contact-form');
-  const messageBox = document.getElementById('form-message');
-  if(form){
-    form.addEventListener('submit', async function(e){
-      e.preventDefault();
+  const status = document.getElementById('form-status');
+  const backToTop = document.getElementById('back-to-top');
 
-      const nameInput = document.getElementById('name');
-      const emailInput = document.getElementById('email');
-      const msgInput = document.getElementById('mensaje');
-      const submitBtn = form.querySelector('button[type="submit"]');
+  const t = (key) => (content[lang] && content[lang][key]) || key;
 
-      // Basic validation
-      if(!nameInput.value.trim() || !emailInput.value.trim() || !msgInput.value.trim()){
-        showFormMessage('Please fill in all fields.', 'error');
-        return;
-      }
-
-      // Very simple email pattern check
-      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(emailInput.value.trim())){
-        showFormMessage('Please enter a valid email address.', 'error');
-        return;
-      }
-
-  // Read configuration
-      const cfg = window.APP_CONFIG || {};
-      const { EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_DISABLE_SENDING } = cfg;
-
-  // Generic placeholder detection (values not replaced yet)
-      const missing = [];
-      if(!EMAILJS_PUBLIC_KEY) missing.push('gfj346M0eDEMGMMKA');
-      if(!EMAILJS_SERVICE_ID) missing.push('service_fnyp7l9');
-      if(!EMAILJS_TEMPLATE_ID) missing.push('template_064vhg5');
-      if(missing.length){
-        showFormMessage('Email service not configured. Missing: ' + missing.join(', '), 'error');
-        console.warn('[EmailJS] Missing config values:', missing);
-        return;
-      }
-
-      if(EMAILJS_DISABLE_SENDING){
-        showFormMessage('Sending disabled (development mode).', 'error');
-        return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
-
-      const senderName = nameInput.value.trim();
-      const senderEmail = emailInput.value.trim();
-      const senderMsg = msgInput.value.trim();
-
-      // Include both 'from_name' (what your EmailJS template is using) and 'name' (legacy) for safety
-      const templateParams = {
-        from_name: senderName,
-        name: senderName,           // kept in case template still references {{name}}
-        reply_to: senderEmail,      // commonly used by EmailJS to set reply-to header
-        email: senderEmail,         // extra alias if template uses {{email}}
-        message: senderMsg,
-        time: new Date().toLocaleString()
-      };
-
-      try {
-        console.log('[EmailJS] Sending...', { service: EMAILJS_SERVICE_ID, template: EMAILJS_TEMPLATE_ID, params: templateParams });
-        const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-        console.log('[EmailJS] Response:', response);
-        showFormMessage('Message sent successfully! I will contact you soon.', 'success');
-        form.reset();
-      } catch(err){
-        console.error('[EmailJS] Error while sending:', err);
-        const friendly = (err && (err.text || err.message)) ? 'Error: ' + (err.text || err.message) : 'There was an error sending your message. Please try again later.';
-        showFormMessage(friendly, 'error');
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
-      }
+  function applyLanguage() {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.dataset.i18n;
+      if (content[lang] && content[lang][key]) el.textContent = content[lang][key];
     });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+      const key = el.dataset.i18nPlaceholder;
+      if (content[lang] && content[lang][key]) el.placeholder = content[lang][key];
+    });
+    document.querySelector('.lang-current').textContent = lang.toUpperCase();
+    document.querySelector('.lang-other').textContent = lang === 'es' ? 'EN' : 'ES';
+    document.title = lang === 'es'
+      ? 'Jorge A. Herrero Santana | Desarrollador Full Stack'
+      : 'Jorge A. Herrero Santana | Full Stack Developer';
   }
 
-  function showFormMessage(text, type){
-    if(!messageBox) return;
-    messageBox.style.display = 'block';
-    messageBox.textContent = text;
-    messageBox.style.backgroundColor = type === 'success' ? '#1cb698' : '#b61c1c';
-    messageBox.style.color = '#fff';
+  function closeMenu() {
+    nav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
   }
-});
+
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+  languageToggle?.addEventListener('click', () => {
+    lang = lang === 'es' ? 'en' : 'es';
+    localStorage.setItem('portfolio-lang', lang);
+    applyLanguage();
+  });
+
+  const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 16);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (year) year.textContent = new Date().getFullYear();
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  backToTop?.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, left: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  });
+
+  if (reducedMotion) {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+  } else {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  }
+
+  const cfg = window.APP_CONFIG || {};
+  if (cfg.EMAILJS_PUBLIC_KEY && window.emailjs) {
+    try { window.emailjs.init({ publicKey: cfg.EMAILJS_PUBLIC_KEY }); } catch (_) {}
+  }
+
+  function setStatus(message, type = '') {
+    if (!status) return;
+    status.textContent = message;
+    status.className = `form-status ${type}`.trim();
+  }
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const name = form.elements.name.value.trim();
+    const email = form.elements.email.value.trim();
+    const message = form.elements.message.value.trim();
+    const button = form.querySelector('button[type="submit"]');
+
+    if (!name || !email || !message) {
+      setStatus(t('contact.form.required'), 'error');
+      return;
+    }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      setStatus(t('contact.form.invalidEmail'), 'error');
+      return;
+    }
+
+    const canSend = window.emailjs && cfg.EMAILJS_PUBLIC_KEY && cfg.EMAILJS_SERVICE_ID && cfg.EMAILJS_TEMPLATE_ID && !cfg.EMAILJS_DISABLE_SENDING;
+    if (!canSend) {
+      setStatus(t('contact.form.error'), 'error');
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = t('contact.form.sending');
+    setStatus('');
+
+    try {
+      await window.emailjs.send(cfg.EMAILJS_SERVICE_ID, cfg.EMAILJS_TEMPLATE_ID, {
+        from_name: name,
+        name,
+        reply_to: email,
+        email,
+        message,
+        time: new Date().toLocaleString()
+      });
+      form.reset();
+      setStatus(t('contact.form.success'), 'success');
+    } catch (_) {
+      setStatus(t('contact.form.error'), 'error');
+    } finally {
+      button.disabled = false;
+      button.textContent = t('contact.form.submit');
+    }
+  });
+
+  applyLanguage();
+})();

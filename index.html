@@ -1,356 +1,167 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="description" content="Portfolio de Jorge A. Herrero Santana, desarrollador Full Stack Junior con experiencia en Angular, React, Java y Spring.">
+  <meta property="og:title" content="Jorge A. Herrero Santana | Desarrollador Full Stack">
+  <meta property="og:description" content="Portfolio profesional: experiencia, stack técnico y proyectos full stack.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0d10'/%3E%3Ctext x='50%25' y='52%25' dominant-baseline='middle' text-anchor='middle' fill='%23f3d9b8' font-size='22' font-family='Arial'%3EJH%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Jorge A. Herrero Santana | Desarrollador Full Stack</title>
 </head>
 <body>
-    <!-- Header Menu -->
-    <div class="container-header">
-        <header>
-            <div class="logo">
-                <a href ="#">Jorge</a>
-            </div>
-            <nav id="nav">
-                <ul>
-                    <li><a href="#home" onclick="seleccionar()">Home</a></li>
-                    <li><a href="#about-me" onclick="seleccionar()">About Me</a></li>
-                    <li><a href="#skills" onclick="seleccionar()">SKILLS</a></li>
-                    <li><a href="#curriculum" onclick="seleccionar()">CV</a></li>
-                    <li><a href="#portfolio" onclick="seleccionar()">Portfolio</a></li>
-                    <li><a href="#contact" onclick="seleccionar()">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="nav-responsive" onclick="showHideMenu()">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-        </header>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header class="site-header" id="top">
+    <div class="shell nav-shell">
+      <a class="brand" href="#home" aria-label="Jorge A. Herrero Santana, inicio">JH<span>.</span></a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú"><span></span><span></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+        <a href="#home" data-i18n="nav.home">Inicio</a>
+        <a href="#about" data-i18n="nav.about">Sobre mí</a>
+        <a href="#stack" data-i18n="nav.stack">Stack</a>
+        <a href="#projects" data-i18n="nav.projects">Proyectos</a>
+        <a href="#experience" data-i18n="nav.experience">Experiencia</a>
+        <a href="#contact" data-i18n="nav.contact">Contacto</a>
+      </nav>
+      <button class="language-toggle" id="language-toggle" type="button" aria-label="Cambiar idioma"><span class="lang-current">ES</span><span class="lang-separator">/</span><span class="lang-other">EN</span></button>
     </div>
+  </header>
 
-    <!-- Main Section (Hero) -->
-    <section id="home" class="home">
-        <div class="container-banner">
-            <div class="container-img">
-                <img src="images/hero.png" alt="Foto de perfil">
-            </div>
-            <h1>Jorge A. Herrero Santana</h1>
-            <h2>Desarrollador Full Stack</h2>
-            <div class="redes">
-                <a href="https://github.com/Jorgell01" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/jorge-alberto-herrero-santana-60ab16339" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://discord.com/users/213089627588919297" target="_blank"><i class="fa-brands fa-discord"></i></a>
-            </div>
+  <main id="main">
+    <section class="hero section" id="home">
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Desarrollo web · Frontend &amp; Backend</p>
+          <h1>Jorge A.<br>Herrero Santana</h1>
+          <h2 data-i18n="hero.role">Desarrollador Full Stack Junior</h2>
+          <p class="hero-lead" data-i18n="hero.lead">Técnico Superior en DAM y DAW. Perfil junior full stack con experiencia práctica en desarrollo web, frontend Angular/React y backend Java/Spring.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects" data-i18n="hero.projects">Ver proyectos</a>
+            <a class="button button-secondary" href="files/Jorge_Alberto_Herrero_Santana_CV.pdf" download data-i18n="hero.cv">Descargar CV</a>
+          </div>
+          <div class="hero-links" aria-label="Perfiles profesionales">
+            <a href="https://github.com/Jorgell01" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            <a href="https://www.linkedin.com/in/jorge-alberto-herrero-santana-60ab16339" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+            <span data-i18n="hero.location">Tenerife, España</span>
+          </div>
         </div>
-    </section>
-    
-    <!-- About Me Section -->
-    <section id="about-me" class="about-me">
-        <div class="container-section">
-            <h2>About Me</h2>
-            <p><span>Hello, I'm Jorge A. Herrero Santana.</span> Full Stack Developer with experience in modern and efficient web applications. Passionate about learning new technologies and constantly improving my skills.</p>
-
-            <div class="row">
-                <!-- Personal Information -->
-                <div class="col">
-                    <h3>Personal Information</h3>
-                    <ul>
-                        <li>
-                            <strong>Name:</strong>
-                            Jorge A. Herrero Santana
-                        </li>
-                        <li>
-                            <strong>Age:</strong>
-                            24 years
-                        </li>
-                        <li>
-                            <strong>Email:</strong>
-                            jorgellherrerosantana@gmail.com
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Interests -->
-                <div class="col">
-                    <h3>Interests</h3>
-                    <div class="container-interests">
-                        <div class="interests">
-                            <i class="fa-solid fa-gamepad"></i>
-                            <span>Gaming</span>
-                        </div>
-                        <div class="interests">
-                            <i class="fa-solid fa-music"></i>
-                            <span>Music</span>
-                        </div>
-                        <div class="interests">
-                            <i class="fa-solid fa-plane"></i>
-                            <span>Travel</span>
-                        </div>
-                        <div class="interests">
-                            <i class="fa-solid fa-film"></i>
-                            <span>Movies</span>
-                        </div>
-                        <div class="interests">
-                            <i class="fa-solid fa-book"></i>
-                            <span>Reading</span>
-                        </div>
-                        <div class="interests">
-                            <i class="fa-solid fa-code"></i>
-                            <span>Coding</span> 
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Download CV Button -->
-                <div class="col btn-cv">
-                    <button id="download-cv">
-                        Download CV <i class="fa-solid fa-download"></i>
-                        <span class="overlay"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- SKILLS SECTION -->
-    <section class="skills" id="skills">
-        <div class="container-skills">
-            <h2>Skills</h2>
-            <div class="row">
-                <!-- Technical Skills -->
-                <div class="col">
-                    <h3>Technical Skills</h3>
-                    <div class="skill">
-                        <span>JavaScript</span>
-                        <div class="progress-bar">
-                            <div class="progress javascript"></div>
-                            <div class="percentage">75%</div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>HTML & CSS</span>
-                        <div class="progress-bar">
-                            <div class="progress htmlcss"></div>
-                            <div class="percentage">89%</div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Photoshop</span>
-                        <div class="progress-bar">
-                            <div class="progress photoshop"></div>
-                            <div class="percentage">95%</div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>WordPress</span>
-                        <div class="progress-bar">
-                            <div class="progress wordpress"></div>
-                            <div class="percentage">81%</div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Java</span>
-                        <div class="progress-bar">
-                            <div class="progress java"></div>
-                            <div class="percentage">55%</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Professional Skills -->
-                <div class="col">
-                    <h3>Professional Skills</h3>
-                    <div class="skill">
-                        <span>Communication</span>
-                        <div class="progress-bar">
-                            <div class="progress communication"></div>
-                            <div class="percentage">80%</div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Teamwork</span>
-                        <div class="progress-bar">
-                            <div class="progress teamwork"></div>
-                            <div class="percentage">70%</div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Creativity</span>
-                        <div class="progress-bar">
-                            <div class="progress creativity"></div>
-                            <div class="percentage">99%</div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Dedication</span>
-                        <div class="progress-bar">
-                            <div class="progress dedication"></div>
-                            <div class="percentage">65%</div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Project Management</span>
-                        <div class="progress-bar">
-                            <div class="progress management"></div>
-                            <div class="percentage">94%</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <aside class="hero-visual reveal" aria-label="Resumen profesional">
+          <div class="portrait-wrap"><img src="images/hero.png" alt="Jorge A. Herrero Santana" width="460" height="460"></div>
+          <div class="hero-facts">
+            <div><span>01</span><strong>DAM + DAW</strong></div>
+            <div><span>02</span><strong>Angular · React</strong></div>
+            <div><span>03</span><strong>Java · Spring</strong></div>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <!-- Section Curriculum -->
-    <section id ="curriculum" class="curriculum">
-        <div class="container-section">
-            <h2>Curriculum</h2>
-            <div class="row">
-                <div class="left-col">
-                    <h3>Education</h3>
-                    <div class="left-item">
-                        <h4>Application Multiplatform Developer</h4>
-                        <span class="home">
-                            <img src="images/Canarias_Logo.jpg" alt="IES Canarias Logo" class="institution-logo">
-                            IES Canarias
-                        </span>
-                        <span class="date">2023-2025</span>
-                        <p>Completed the higher vocational training program in Multiplatform Application Development, acquiring knowledge in Java, databases, mobile application development, and object-oriented programming.</p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
-                    <div class="left-item">
-                        <h4>Application Web Developer</h4>
-                        <span class="home">
-                            <img src="images/Perez_Minik_Logo.jpg" alt="IES Domingo Pérez Minik Logo" class="institution-logo">
-                            IES Domingo Pérez Minik
-                        </span>
-                        <span class="date">2025-2026</span>
-                        <p>Currently studying the second year of Web Application Development, learning technologies such as JavaScript, HTML, CSS, PHP, and databases.</p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="right-col">
-                <h3>Experience</h3>
-                <div class="right-item">
-                    <h4>Junior Web Developer</h4>
-                    <span class="home">
-                        <img src="images/Digital7_Logo.jpg" alt="Digital 7 Logo" class="institution-logo">
-                        Digital 7</span>
-                    <span class="date">March 2025-May 2025</span>
-                    <p>Development and design of web pages using HTML, CSS, and WordPress.</p>
-                    <div class="conectord">
-                        <div class="circulod"></div>
-                    </div>
-                </div>
-            </div>
+    <section class="section section-muted" id="about">
+      <div class="shell split-section">
+        <div class="section-heading reveal">
+          <p class="eyebrow" data-i18n="about.kicker">Perfil</p>
+          <h2 data-i18n="about.title">Desarrollo soluciones web de extremo a extremo.</h2>
         </div>
+        <div class="about-content reveal">
+          <p class="large-copy" data-i18n="about.body">Técnico Superior en DAM y DAW. Perfil junior full stack con experiencia práctica en desarrollo web, frontend Angular/React y backend Java/Spring. Orientado al aprendizaje continuo, al trabajo en equipo y a construir soluciones mantenibles y útiles para el usuario.</p>
+          <div class="about-points">
+            <article><span>01</span><h3 data-i18n="about.point1.title">Full stack</h3><p data-i18n="about.point1.text">Cómodo moviéndome entre frontend, backend y datos según lo requiera el proyecto.</p></article>
+            <article><span>02</span><h3 data-i18n="about.point2.title">Trabajo en equipo</h3><p data-i18n="about.point2.text">Experiencia práctica en entornos reales, con foco en comunicación, mantenimiento y colaboración.</p></article>
+            <article><span>03</span><h3 data-i18n="about.point3.title">Aprendizaje continuo</h3><p data-i18n="about.point3.text">Me adapto a nuevas tecnologías y entornos sin cerrarme a un único stack.</p></article>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Section Portfolio -->
-    <section id="portfolio" class="portfolio">
-        <div class="container-section">
-            <h2>Portfolio</h2>
-            <div class="row">
-                <div class="project-item">
-                    <div class="project-info">
-                        <h4>TFT</h4>
-                        <p>Interactive multiplayer quiz game inspired by “Who Wants to Be a Millionaire?”, featuring lifelines, question levels, and prize ladder. Built with TypeScript, Express, and React.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Jorgell01/tft" target="_blank"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-info">
-                        <h4>Jayuwoki</h4>
-                        <p>App with graphical interface to integrate and manage a Discord bot, using Spring, JavaFX, and SQLite.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Jorgell01/jayuwoki" target="_blank"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-info">
-                        <h4>Game Recap</h4>
-                        <p>App to obtain information about video games, metacritics, and genres in an educational app for analyzing activity in video games.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Jorgell01/game_recap" target="_blank"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="section" id="stack">
+      <div class="shell">
+        <div class="section-heading compact reveal">
+          <p class="eyebrow" data-i18n="stack.kicker">Tecnologías</p>
+          <h2 data-i18n="stack.title">Stack técnico</h2>
+          <p data-i18n="stack.subtitle">Tecnologías con las que he trabajado en formación, proyectos y experiencia profesional.</p>
         </div>
+        <div class="stack-grid reveal">
+          <article class="stack-card"><div class="stack-card-head"><span>01</span><h3 data-i18n="stack.frontend">Frontend</h3></div><div class="tag-list"><span>Angular</span><span>React</span><span>Vite</span><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>TypeScript</span><span>Tailwind</span></div></article>
+          <article class="stack-card"><div class="stack-card-head"><span>02</span><h3 data-i18n="stack.backend">Backend</h3></div><div class="tag-list"><span>Java</span><span>Spring</span><span>JPA/Hibernate</span><span>REST APIs</span><span>PHP</span><span>Node.js</span><span>Python</span></div></article>
+          <article class="stack-card"><div class="stack-card-head"><span>03</span><h3 data-i18n="stack.databases">Bases de datos</h3></div><div class="tag-list"><span>SQL</span><span>MySQL</span><span>Oracle</span><span>PostgreSQL</span></div></article>
+          <article class="stack-card"><div class="stack-card-head"><span>04</span><h3 data-i18n="stack.tools">Herramientas / otros</h3></div><div class="tag-list"><span>Git/GitHub</span><span>SVN</span><span>Docker</span><span>Maven</span><span>Postman</span><span>IntelliJ IDEA</span><span>VS Code</span><span>WordPress</span><span>XAMPP/IIS</span><span>VirtualBox</span><span>Cisco Packet Tracer</span></div></article>
+        </div>
+      </div>
     </section>
 
-    <!-- Section Contact -->
-    <section id="contact" class="contact">
-        <div class="container-section">
-            <h2>Contact</h2>
-            <div class="row">
-                <div class="col contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item">
-                        <i class="fa-solid fa-envelope"></i>
-                        <span>jorgellherrerosantana@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Tenerife, Canarias</span>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/Jorgell01" target="_blank"><i class="fa-brands fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/jorge-alberto-herrero-santana-60ab16339"><i class="fa-brands fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="col contact-form">
-                    <h3>Send me a message</h3>
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="mensaje" placeholder="Message" rows="6" required></textarea>
-                        </div>
-                        <button type="submit">Send Message</button>
-                    </form>
-                    <div id="form-message" style="display: none; margin-top: 15px; padding: 10px; border-radius: 5px;"></div>
-                </div>
-            </div>
+    <section class="section section-muted" id="projects">
+      <div class="shell">
+        <div class="section-heading compact reveal">
+          <p class="eyebrow" data-i18n="projects.kicker">Trabajo seleccionado</p>
+          <h2 data-i18n="projects.title">Proyectos destacados</h2>
+          <p data-i18n="projects.subtitle">Una selección orientada a mostrar distintos tipos de problemas, stacks y responsabilidades.</p>
         </div>
+        <article class="project project-featured reveal">
+          <div class="project-visual project-visual-game" aria-label="Placeholder visual para Game Recap"><div class="visual-window"><div class="window-bar"><span></span><span></span><span></span></div><div class="game-dashboard"><div class="game-side"></div><div class="game-main"><div></div><div></div><div></div></div></div></div></div>
+          <div class="project-copy">
+            <p class="project-index"><span>01</span> <strong data-i18n="projects.featured">Proyecto destacado</strong></p>
+            <h3>Game Recap</h3>
+            <p data-i18n="projects.game.summary">Aplicación web full stack para registrar y analizar sesiones de juego, explorar videojuegos y participar en una comunidad con reseñas y favoritos.</p>
+            <ul class="project-features"><li data-i18n="projects.game.f1">Login con email o Steam.</li><li data-i18n="projects.game.f2">Historial de sesiones, estadísticas y gráficos interactivos.</li><li data-i18n="projects.game.f3">RAWG, Game Detail, favoritos, reseñas y Community Hub.</li></ul>
+            <div class="tag-list small"><span>React 18</span><span>Vite</span><span>Node.js</span><span>Express</span><span>Prisma</span><span>SQLite</span><span>JWT</span><span>Passport Steam</span><span>RAWG</span></div>
+            <a class="text-link" href="https://github.com/Jorgell01/game_recap" target="_blank" rel="noopener noreferrer" data-i18n="projects.repo">Ver repositorio</a>
+          </div>
+        </article>
+        <div class="project-grid">
+          <article class="project project-compact reveal">
+            <div class="project-visual project-visual-inventory" aria-label="Placeholder visual para inventario"><span class="mono">STOCK / 042</span><div class="inventory-bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="project-copy"><p class="project-index"><span>02</span></p><h3 data-i18n="projects.inventory.title">Control de inventario y stock</h3><p data-i18n="projects.inventory.summary">TFG / proyecto intermodular para gestionar inventario y stock conectando software con dispositivos y servicios externos.</p><ul class="project-features"><li data-i18n="projects.inventory.f1">Integración con Open Food Facts.</li><li data-i18n="projects.inventory.f2">Lectura de peso mediante báscula por puerto COM.</li><li data-i18n="projects.inventory.f3">Escáner de códigos QR y códigos de barras.</li></ul><a class="text-link" href="https://github.com/proyecto-intermodular-lovelace/proyecto-intermodular" target="_blank" rel="noopener noreferrer" data-i18n="projects.repo">Ver repositorio</a></div>
+          </article>
+          <article class="project project-compact reveal">
+            <div class="project-visual project-visual-bot" aria-label="Placeholder visual para Jayuwoki"><div class="bot-terminal mono"><span>&gt; $privadita</span><span>&gt; $verElo</span><span>&gt; $rolladie 20</span></div></div>
+            <div class="project-copy"><p class="project-index"><span>03</span></p><h3>Jayuwoki</h3><p data-i18n="projects.jayuwoki.summary">Bot de Discord con aplicación de escritorio para crear equipos, gestionar jugadores, una tabla de puntuación Elo y distintos comandos.</p><ul class="project-features"><li data-i18n="projects.jayuwoki.f1">Privaditas 5v5 y sistema Elo.</li><li data-i18n="projects.jayuwoki.f2">CRUD de jugadores y estadísticas.</li><li data-i18n="projects.jayuwoki.f3">Java 22, JavaFX, JDA, Firebase Firestore y Maven.</li></ul><a class="text-link" href="https://github.com/Jorgell01/jayuwoki" target="_blank" rel="noopener noreferrer" data-i18n="projects.repo">Ver repositorio</a></div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 Jorge A. Herrero Santana. All rights reserved.</p>
-    </footer>
+    <section class="section" id="experience">
+      <div class="shell">
+        <div class="section-heading compact reveal"><p class="eyebrow" data-i18n="experience.kicker">Trayectoria</p><h2 data-i18n="experience.title">Experiencia y formación</h2><p data-i18n="experience.subtitle">Experiencia práctica en desarrollo web y dos titulaciones superiores enfocadas a software.</p></div>
+        <div class="timeline-layout">
+          <div class="timeline-block reveal"><h3 class="timeline-label" data-i18n="experience.label">Experiencia profesional</h3>
+            <article class="timeline-item"><div class="timeline-marker"></div><div class="timeline-meta"><span class="mono">Feb 2026 — May 2026</span><strong>Laberit</strong></div><div class="timeline-copy"><h4 data-i18n="experience.laberit.role">Programador Junior Full Stack · Prácticas</h4><p class="timeline-context" data-i18n="experience.laberit.context">Proyecto para la Generalitat Valenciana · entorno de administración pública</p><ul><li data-i18n="experience.laberit.b1">Desarrollo y mantenimiento de funcionalidades frontend y backend.</li><li data-i18n="experience.laberit.b2">DTOs, servicios, repositorios, controladores REST y lógica de negocio con Java, Spring y JPA/Hibernate.</li><li data-i18n="experience.laberit.b3">Angular/TypeScript con formularios reactivos, datatables, wizards y componentes ARQ SDK.</li><li data-i18n="experience.laberit.b4">Postman, Oracle, SVN, Maven, WildFly/JBoss e IntelliJ IDEA.</li></ul></div></article>
+            <article class="timeline-item"><div class="timeline-marker"></div><div class="timeline-meta"><span class="mono">Feb 2025 — May 2025</span><strong>Digital 7</strong></div><div class="timeline-copy"><h4 data-i18n="experience.digital7.role">Desarrollador de páginas web · Prácticas</h4><ul><li data-i18n="experience.digital7.b1">Diseño y desarrollo de sitios web personalizados con WordPress.</li><li data-i18n="experience.digital7.b2">Configuración y optimización de plugins y temas.</li><li data-i18n="experience.digital7.b3">Mantenimiento, actualización y mejoras SEO.</li></ul></div></article>
+          </div>
+          <div class="timeline-block reveal"><h3 class="timeline-label" data-i18n="education.label">Formación</h3>
+            <article class="education-card"><span class="mono">2025 — 2026</span><h4 data-i18n="education.daw.title">Técnico Superior en Desarrollo de Aplicaciones Web</h4><p>IES Domingo Pérez Minik</p></article>
+            <article class="education-card"><span class="mono">2023 — 2025</span><h4 data-i18n="education.dam.title">Técnico Superior en Desarrollo de Aplicaciones Multiplataforma</h4><p>IES Canarias</p></article>
+            <p class="language-note" data-i18n="education.english">Inglés B1 certificado · uso profesional en documentación técnica, herramientas y entornos de desarrollo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- EmailJS CDN (defer so it executes after parsing, keeps order) -->
-        <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-        <!-- Config (ignored in git) with load diagnostics -->
-        <script defer src="js/config.js" onload="console.log('[config.js] loaded (status OK)')" onerror="console.error('[config.js] failed to load (404?)')"></script>
-        <!-- Fallback: if for any reason APP_CONFIG is missing when DOM is ready, inject defaults -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function(){
-                if(!window.APP_CONFIG){
-                    console.warn('[EmailJS] APP_CONFIG missing after DOMContentLoaded. Injecting fallback config.');
-                    window.APP_CONFIG = {
-                        EMAILJS_PUBLIC_KEY: 'gfj346M0eDEMGMMKA',
-                        EMAILJS_SERVICE_ID: 'service_fnyp7l9',
-                        EMAILJS_TEMPLATE_ID: 'template_064vhg5',
-                        EMAILJS_DISABLE_SENDING: false
-                    };
-                }
-            });
-        </script>
-        <!-- Main logic -->
-        <script defer src="js/main.js"></script>
- </body>
+    <section class="section section-contact" id="contact">
+      <div class="shell contact-grid">
+        <div class="contact-copy reveal"><p class="eyebrow" data-i18n="contact.kicker">Hablemos</p><h2 data-i18n="contact.title">¿Tienes un proyecto o una oportunidad?</h2><p data-i18n="contact.subtitle">Puedes escribirme directamente o utilizar el formulario.</p><dl class="contact-details"><div><dt>Email</dt><dd><a href="mailto:jorgellherrerosantana@gmail.com">jorgellherrerosantana@gmail.com</a></dd></div><div><dt data-i18n="contact.locationLabel">Ubicación</dt><dd data-i18n="hero.location">Tenerife, España</dd></div></dl></div>
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <label for="name" data-i18n="contact.form.name">Nombre</label><input id="name" name="name" type="text" autocomplete="name" required placeholder="Tu nombre" data-i18n-placeholder="contact.form.namePlaceholder">
+          <label for="email" data-i18n="contact.form.email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="tu@email.com" data-i18n-placeholder="contact.form.emailPlaceholder">
+          <label for="message" data-i18n="contact.form.message">Mensaje</label><textarea id="message" name="message" rows="6" required placeholder="Cuéntame brevemente en qué puedo ayudarte" data-i18n-placeholder="contact.form.messagePlaceholder"></textarea>
+          <button class="button button-primary form-submit" type="submit" data-i18n="contact.form.submit">Enviar mensaje</button><p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-inner"><p>© <span id="year">2026</span> · <span data-i18n="footer.copy">Diseñado y desarrollado por Jorge A. Herrero Santana.</span></p><a href="#top" id="back-to-top" data-i18n="footer.back">Volver arriba</a></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/content.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
 </html>
